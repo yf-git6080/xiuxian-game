@@ -15,13 +15,126 @@
 - ✅ **离线收益** - 离线挂机也能获得奖励
 - ✅ **数据存储** - 自动保存游戏进度
 
+## 💻 环境要求
+
+### 必需软件
+
+#### 1. Node.js (必需)
+- **版本要求**: Node.js 14.0.0 或更高版本（推荐 16.x 或 18.x）
+- **下载地址**: https://nodejs.org/
+- **验证安装**:
+  ```bash
+  node --version  # 应显示 v14.0.0 或更高
+  npm --version   # 应显示 npm 版本号
+  ```
+
+#### 2. npm 或 yarn (必需)
+- **npm**: 随 Node.js 自动安装
+- **yarn** (可选):
+  ```bash
+  npm install -g yarn
+  yarn --version
+  ```
+
+#### 3. Git (推荐)
+- **用途**: 克隆仓库、版本控制
+- **下载地址**: https://git-scm.com/
+- **验证安装**:
+  ```bash
+  git --version
+  ```
+
+#### 4. TypeScript (自动安装)
+- 项目会自动安装 TypeScript 依赖
+- **手动安装** (可选):
+  ```bash
+  npm install -g typescript
+  tsc --version
+  ```
+
+### 推荐工具
+
+#### 代码编辑器
+- **Visual Studio Code** (推荐): https://code.visualstudio.com/
+  - 推荐扩展:
+    - TypeScript Hero
+    - ESLint
+    - Prettier - Code formatter
+    - GitLens
+
+- **WebStorm** (付费): https://www.jetbrains.com/webstorm/
+
+#### 抖音小游戏开发 (可选)
+如果要在抖音小游戏平台发布：
+
+1. **字节跳动开发者工具**
+   - 下载地址: https://developer.tiktok.com/docs/minigame/development-tool
+   - 用于调试和发布抖音小游戏
+
+2. **Cocos Creator** (可选，用于可视化开发)
+   - 版本: v3.8 或更高
+   - 下载地址: https://www.cocos.com/creator-download
+   - 用于创建游戏UI和动画
+
+### 操作系统支持
+
+| 操作系统 | 支持状态 | 说明 |
+|---------|---------|------|
+| Windows 10+ | ✅ 完全支持 | 推荐使用 PowerShell 或 Git Bash |
+| macOS 10.14+ | ✅ 完全支持 | 推荐使用 Terminal |
+| Linux | ✅ 完全支持 | 支持 Ubuntu、Debian、CentOS 等 |
+
+---
+
 ## 🚀 快速开始
 
-### 安装依赖
+### 方法一：从GitHub克隆（推荐）
 
 ```bash
-cd /home/gem/.openclaw/workspace/xiuxian-game
+# 1. 克隆仓库
+git clone https://github.com/yf-git6080/xiuxian-game.git
+
+# 2. 进入项目目录
+cd xiuxian-game
+
+# 3. 安装依赖
 npm install
+
+# 4. 编译项目
+npm run build
+
+# 5. 运行游戏
+npm start
+```
+
+### 方法二：下载源码
+
+1. 访问 https://github.com/yf-git6080/xiuxian-game
+2. 点击 "Code" → "Download ZIP"
+3. 解压文件
+4. 在项目目录打开终端
+5. 执行以下命令:
+
+```bash
+npm install
+npm run build
+npm start
+```
+
+### 方法三：直接运行（本地已有项目）
+
+```bash
+# 进入项目目录
+cd /home/gem/.openclaw/workspace/xiuxian-game
+
+# 安装依赖
+npm install
+
+# 编译项目
+npm run build
+
+# 运行游戏
+npm start
 ```
 
 ### 编译项目
@@ -77,7 +190,40 @@ npm start
 - 离线收益效率为在线的50%
 - 自动发放经验和灵石
 
-## 📁 项目结构
+### 验证安装
+
+运行以下命令验证所有依赖是否正确安装:
+
+```bash
+# 检查 Node.js
+node --version
+# 预期输出: v14.x.x 或更高
+
+# 检查 npm
+npm --version
+# 预期输出: 6.x.x 或更高
+
+# 检查 TypeScript
+npx tsc --version
+# 预期输出: Version 5.x.x
+
+# 检查项目依赖
+cd xiuxian-game
+npm list
+# 应该显示 typescript 和 @types/node
+
+# 测试编译
+npm run build
+# 应该成功编译，无错误信息
+
+# 测试运行
+npm start
+# 应该看到游戏启动信息
+```
+
+如果所有检查都通过，恭喜你，环境配置成功！🎮
+
+---
 
 ```
 xiuxian-game/
@@ -218,6 +364,153 @@ if (typeof tt !== 'undefined' && tt.getStorageSync) {
 - **境界加成** - 从1.0倍到50.0倍
 - **掉落概率** - 普通装备30%，传说装备1%
 - **离线效率** - 50%在线效率
+
+---
+
+## ❓ 常见问题
+
+### 1. Node.js 版本不兼容怎么办？
+
+**问题**: 提示 Node.js 版本过低
+
+**解决方案**:
+```bash
+# 使用 nvm (Node Version Manager) 切换版本
+nvm install 16
+nvm use 16
+
+# 或者直接从官网下载最新版本
+# https://nodejs.org/
+```
+
+### 2. npm install 失败怎么办？
+
+**问题**: 安装依赖时报错
+
+**解决方案**:
+```bash
+# 清除 npm 缓存
+npm cache clean --force
+
+# 删除 node_modules 重新安装
+rm -rf node_modules package-lock.json
+npm install
+
+# 如果还是失败，尝试使用淘宝镜像
+npm install --registry=https://registry.npmmirror.com
+```
+
+### 3. 编译报错怎么办？
+
+**问题**: `npm run build` 失败
+
+**解决方案**:
+```bash
+# 检查 TypeScript 版本
+npm list typescript
+
+# 重新安装 TypeScript
+npm install typescript@latest --save-dev
+
+# 清除编译缓存
+rm -rf dist
+npm run build
+```
+
+### 4. 游戏运行没有反应？
+
+**问题**: `npm start` 后没有输出
+
+**解决方案**:
+```bash
+# 确认已编译
+npm run build
+
+# 检查 dist 目录是否存在
+ls dist/
+
+# 手动运行
+node dist/main.js
+```
+
+### 5. 如何停止游戏？
+
+**解决方案**:
+- 在终端按 `Ctrl + C` 停止游戏
+- 游戏会自动保存进度
+
+### 6. 如何修改玩家名称？
+
+**解决方案**:
+修改 `src/main.ts` 文件最后一行:
+```typescript
+app.start('你的角色名称');
+```
+
+然后重新编译运行:
+```bash
+npm run build
+npm start
+```
+
+### 7. 如何修改游戏参数？
+
+**调整战斗速度**: 修改 `src/main.ts`
+```typescript
+this.game = new GameController({
+  autoSaveInterval: 30000,  // 自动保存间隔(毫秒)
+  battleInterval: 1000     // 战斗间隔(毫秒)，改为500表示每0.5秒战斗一次
+});
+```
+
+**调整经验倍率**: 修改 `src/systems/LevelSystem.ts`
+```typescript
+getExpNeeded(level: number): number {
+  return Math.floor(100 * Math.pow(1.15, level - 1));  // 修改1.15调整经验增长速度
+}
+```
+
+---
+
+## 🔧 故障排除
+
+### 检查环境
+
+运行诊断脚本:
+
+```bash
+# 检查 Node.js
+node --version
+
+# 检查 npm
+npm --version
+
+# 检查 TypeScript
+tsc --version
+
+# 检查项目结构
+ls -la
+```
+
+### 重新安装
+
+如果遇到任何问题，尝试完全重新安装:
+
+```bash
+# 删除所有依赖
+rm -rf node_modules package-lock.json dist
+
+# 重新安装
+npm install
+
+# 重新编译
+npm run build
+
+# 运行
+npm start
+```
+
+---
 
 ## 🐛 已知问题
 
