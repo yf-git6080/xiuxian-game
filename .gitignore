@@ -1,0 +1,34 @@
+# 依赖
+node_modules/
+package-lock.json
+
+# 编译输出
+dist/
+*.js
+*.js.map
+*.d.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+*.tmp
+.cache/
+
+# 环境变量
+.env
+.env.local
+
+# 游戏存档（可选）
+save/
